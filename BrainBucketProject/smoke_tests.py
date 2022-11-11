@@ -1,17 +1,17 @@
 from selenium import webdriver
 from selenium.webdriver.support.color import Color
 
-driver = webdriver.Chrome(executable_path='drivers/chromedriver')
+driver = webdriver.Chrome(executable_path="drivers/chromedriver")
 driver.get("https://cleveronly.com/brainbucket/index.php?route=account/login")
 
 driver.maximize_window()
 
-logo = driver.find_element("xpath", "//img[@title='Brainbucket']")
+logo = driver.find_element_by_xpath("//img[@title='Brainbucket']")
 
-new_registrant_btn = driver.find_element("xpath", "//a[contains(text(),'Continue'))")
-background_color = new_registrant_btn.value_of_css_property("background_color")
-converted_background_color=Color.from_string("background-color")
-assert converted_background_color.rgb == 'rgb(34,154,200)'
+new_registrant_btn = driver.find_element("xpath", "//a[contains(text(),'Continue')]")
+background_color = new_registrant_btn.value_of_css_property("background-color")
+converted_background_color = Color.from_string(background_color)
+assert converted_background_color.rgb == 'rgb(34, 154, 200)'
 new_registrant_btn.click()
 
 
@@ -65,7 +65,7 @@ telephone_input.send_keys("3313333333")
 
 fax_field = driver.find_element("xpath", "//fieldset/div[6]")
 fax_field_class = fax_field.get_attribute("class")
-assert "required" in fax_field_class
+assert "required" not in fax_field_class
 
 fax_input = driver.find_element("id", "input-fax")
 fax_input.clear()
@@ -102,7 +102,7 @@ assert "required" in passwordcnfrm_field_class
 
 passwordcnfrm_input = driver.find_element("id", "input-confirm")
 passwordcnfrm_input.clear()
-password_input.send.keys("123456")
+password_input.send_keys("123456")
 
 background_color =new_registrant_btn.value_of_css_property("background-color")
 converted_background_color = Color.from_string(background_color)
