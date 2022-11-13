@@ -67,6 +67,7 @@ fax_field = driver.find_element("xpath", "//fieldset/div[6]")
 fax_field_class = fax_field.get_attribute("class")
 assert "required" not in fax_field_class
 
+
 fax_input = driver.find_element("id", "input-fax")
 fax_input.clear()
 fax_input.send_keys("3313331111")
@@ -88,6 +89,14 @@ city_input = driver.find_element("id", "input-city")
 city_input.clear()
 city_input.send_keys("Bolingbrook")
 
+postcode_field = driver.find_element_by_xpath("//fieldset/div[5]")
+postcode_field_class = postcode_field.get_attribute("class")
+assert "required" not in postcode_field_class
+
+postcode_input = driver.find_element("id", "input_postcode")
+postcode_input.clear()
+postcode_input.send_keys("60440")
+
 password_field = driver.find_element("xpath", "//fieldset/div[1]")
 password_field_class = password_field.get_attribute("class")
 assert "required" in password_field_class
@@ -104,7 +113,26 @@ passwordcnfrm_input = driver.find_element("id", "input-confirm")
 passwordcnfrm_input.clear()
 password_input.send_keys("123456")
 
-background_color =new_registrant_btn.value_of_css_property("background-color")
+background_color = new_registrant_btn.value_of_css_property("background-color")
 converted_background_color = Color.from_string(background_color)
-assert converted_background_color.rgb == 'rgb(34,154,200)'
+assert converted_background_color.rgb == 'rgb(34, 154, 200)'
+
+company_field = driver.find_element("xpath", "")//fieldset/div[1]
+company_field_class = company_field.get_attribute("class")
+assert "required" not in company_field_class
+
+company_input = driver.find_element ("id", "input-company")
+company_input.clear()
+company_input.send_keys ("AKseniia LLC")
+
+
+address2_field = driver.find_element("xpath", "//fieldset/div[3]")
+address2_field_class = address2_field.get_attribute("class")
+assert "required" not in address2_field_class
+
+address2_input = driver.find_element("id", "input-address-2")
+address2_input.clear()
+address2_input.send_keys("266 Claridge Circle")
+
+
 
