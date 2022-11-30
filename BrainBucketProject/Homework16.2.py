@@ -22,10 +22,10 @@ def shout_echo(word1, echo="1"):
     return shout_word
 
 # Call shout_echo() with "Hey": no_echo
-no_echo = "Hey"
+no_echo = shout_echo('Hey')
 
 # Call shout_echo() with "Hey" and echo=5: with_echo
-with_echo = "Hey", 5
+with_echo =shout_echo('Hey', echo='5')
 
 # Print no_echo and with_echo
 print(no_echo)
