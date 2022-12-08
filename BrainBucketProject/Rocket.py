@@ -3,33 +3,30 @@ class Rocket:
         self.x = x
         self.y = y
     def move_up(self):
-        print(self.y + 1)
+        self.y += 1
+        print(self.y)
 
     def move_right(self):
-        print(self.x + 1)
+        self.x += 1
+        print(self.x)
 
     def move_down(self):
-        print(self.y - 1)
+        self.y -= 1
+        print(self.y)
+
 
     def move_left(self):
-        print(self.x - 1)
+        self.x -= 1
+        print(self.x)
 
     def current_position(self):
-        print(self.x + self.y)
+        print(self.x, self.y)
 
 
-move1 = Rocket(0,0)
-move1.move_up()
-
-move2 = Rocket(0,0)
-move2.move_right()
-
-move3 = Rocket(0,0)
-move3.move_down()
-
-move4 = Rocket(0,0)
-move4.move_left()
-
-current = Rocket(0,0)
-current.current_position()
+Rocket1 = Rocket(0,0)
+Rocket1.move_up()
+Rocket1.move_right()
+Rocket1.move_left()
+Rocket1.move_down()
+Rocket1.current_position()
 
