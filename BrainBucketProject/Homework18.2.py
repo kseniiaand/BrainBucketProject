@@ -2,7 +2,7 @@
 keep_going = True
 while keep_going:
     user_input = input("Type anything ,or type STOP to exit\n").lower()
-    if user_input == "STOP":
+    if user_input == "stop":
         break
     print("You typed '", user_input, "'")
 
@@ -15,4 +15,4 @@ for key, value in my_dict.items():
 
 # Exercise 3
 my_tuple = (4, 30, 2017, 2, 27)
-print('2', '27', '2017', '4', '30'.format(my_tuple))
+print('{} {} {} {} {}'.format(my_tuple[3], my_tuple[4], my_tuple[2], my_tuple[0], my_tuple[1]))
