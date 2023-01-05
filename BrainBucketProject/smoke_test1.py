@@ -119,3 +119,5 @@ background_color2 = continue_btn.value_of_css_property("background-color")
 converted_background_color2 = Color.from_string(background_color2)
 assert converted_background_color2.rgb == 'rgb(34, 154, 200)'
 continue_btn.click()
+
+driver.quit()
