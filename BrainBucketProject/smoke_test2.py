@@ -17,3 +17,4 @@ login_btn.click()
 page_title = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By. XPATH, "//a[contains(text(),'Continue')]")))
 assert page_title.text == 'Continue'
 
+driver.quit()
