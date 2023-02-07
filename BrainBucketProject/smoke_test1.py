@@ -10,6 +10,8 @@ from BrainBucketProject.webelements.dropdown import Dropdown
 from BrainBucketProject.webelements.checkbox import Radio_btn
 
 from BrainBucketProject.components.header import Header
+from BrainBucketProject.components.right_menu import Right_menu
+from BrainBucketProject.components.footer import Footer
 URL = "https://cleveronly.com/brainbucket/index.php?route=common/home"
 
 def test_registration_through_dropdown():
@@ -258,10 +260,25 @@ def test_registration_from_right_menu():
 
     browser.shutdown()
 
+#Kseniia Andriushchenko 02/02/2023
+
+def testing_right_menu():
+    browser = Browser('https://cleveronly.com/brainbucket/index.php?route=account/login')
+    driver = browser.get_driver()
+    #clicking at order history button
+    right_menu = Right_menu(browser)
+    right_menu.click_order_history()
 
 
-
+def testing_footer():
+    browser = Browser(URL)
+    driver = browser.get_driver()
+    #clicking at About Us button
+    footer = Footer(browser)
+    footer.click_about_us_btn()
 
 if __name__ == "__main__":
     test_registration_through_dropdown()
     test_registration_from_right_menu()
+    testing_right_menu()
+    testing_footer()
