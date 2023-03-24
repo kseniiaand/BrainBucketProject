@@ -1,24 +1,34 @@
-from selenium import webdriver
-from selenium.webdriver.support.color import Color
+
+#from selenium.webdriver.support.color import Color
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
+
 #from selenium.webdriver.support.select import Select
-from BrainBucketProject.webelements.browser import Browser
-from BrainBucketProject.webelements.UIElement import UIElement as Element
-from BrainBucketProject.webelements.dropdown import Dropdown
-from BrainBucketProject.webelements.checkbox import Radio_btn
+#from BrainBucketProject.webelements.browser import Browser
+#from BrainBucketProject.webelements.UIElement import UIElement as Element
+#from BrainBucketProject.webelements.dropdown import Dropdown
+#from BrainBucketProject.webelements.checkbox import Radio_btn
+
+#from BrainBucketProject.components.header import Header
+#from BrainBucketProject.components.right_menu import Right_menu
+#from BrainBucketProject.components.footer import Footer
+#from BrainBucketProject.pages.login_page import LoginPage
+#from BrainBucketProject.pages.registration_page import RegistrationPage
+from BrainBucketProject.utils.config_reader import ConfigReader
+
 
 from BrainBucketProject.components.header import Header
 from BrainBucketProject.components.right_menu import Right_menu
 from BrainBucketProject.components.footer import Footer
 from BrainBucketProject.pages.login_page import LoginPage
 from BrainBucketProject.pages.registration_page import RegistrationPage
+from BrainBucketProject.utils.config_reader import ConfigReader
 
 URL = "https://cleveronly.com/brainbucket/index.php?route=common/home"
+configs = ConfigReader("config.json")
 
 def test_registration_through_dropdown():
-    browser = Browser(URL)
+    browser = Browser(URL, configs.get_browser(), configs.get_wait_time())
     driver = browser.get_driver()
     #clicking on 'My Account' dropdown
 
@@ -33,13 +43,13 @@ def test_registration_through_dropdown():
 
     registration_form.enter_first_name('Kseniia')
     registration_form.enter_last_name('Andriushchenko')
-    registration_form.enter_email('akseniia39@gmail.com')
+    registration_form.enter_email(configs.get_email())
     registration_form.enter_telephone('3313333333')
     registration_form.enter_first_line_address('265 Claridge Cir')
     registration_form.enter_city('Bolingbrook')
     registration_form.select_state('Illinois')
-    registration_form.enter_password('Alpaca123456')
-    registration_form.confirm_password('Alpaca123456')
+    registration_form.enter_password(configs.get_password())
+    registration_form.confirm_password(configs.get_password())
     registration_form.subscribe_to_newsletter()
     registration_form.agree_to_privacy_policy()
     registration_form.submit_form()
@@ -63,7 +73,7 @@ def test_registration_through_dropdown():
     browser.shutdown()
 
 def test_registration_from_right_menu():
-    browser = Browser(URL)
+    browser = Browser(URL, configs.get_browser(), configs.get_wait_time())
     driver = browser.get_driver()
 
     login_page = LoginPage(browser)
@@ -109,7 +119,7 @@ def testing_right_menu():
 
 
 def testing_footer():
-    browser = Browser(URL)
+    browser = Browser(URL, configs.get_browser(), configs.get_wait_time())
     driver = browser.get_driver()
     #clicking at About Us button
     footer = Footer(browser)
@@ -118,7 +128,7 @@ def testing_footer():
     browser.shutdown()
 
 def logging_in():
-    browser = Browser(URL)
+    browser = Browser(URL, configs.get_browser(), configs.get_wait_time())
     driver = browser.get_driver()
 
     login_page = LoginPage(browser)
