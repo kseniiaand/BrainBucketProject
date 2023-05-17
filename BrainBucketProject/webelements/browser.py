@@ -3,7 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import WebDriverException
 
 class Browser:
-    def __init__(self, url, browser_name="", time_wait = 10):
+    def __init__(self, url, browser_name="", time_wait = 10, username ="", accesskey =""):
         try:
             if browser_name.lower() == "firefox":
                 options = webdriver.FirefoxOptions()
@@ -16,7 +16,7 @@ class Browser:
 
                 self.driver = webdriver.Firefox(firefox_profile=firefox_profile, executable_path='drivers/geckodriver')
                 self.driver.maximize_window()
-            else:
+            elif browser_name.lower() == "chrome":
                 options = webdriver.ChromeOptions()
                 options.add_argument("--start-maximized")
                 options.add_argument("--window-size=412,915")
@@ -25,6 +25,18 @@ class Browser:
                 options.add_argument("--disable-popup-blocking")
                 options.add_experimental_option("excludeSwitches", ['enable-automation'])
                 self.driver = webdriver.Chrome(executable_path='drivers/chromedriver 7', options = options)
+            elif browser_name.lower() == "remote":
+                BROWSERSTACK_URL = 'https://xQ3xdfsoj2XiwiBgzmmn:kseniiaandriushc_IPnHpC-cloud.browserstack.com/wd/hub'
+                desired_cap = {
+
+                    'os': 'Windows',
+                    'os_version': '10',
+                    'browser': 'Chrome',
+                    'browser_version': '80',
+                    'name': "kseniiaandriushc 's First Test"
+
+                }
+                self.driver = webdriver.Remote(command_executor=BROWSERSTACK_URL, desired_capabilities=desired_cap)
 
         except WebDriverException:
             print("Error: executable path to driver is incorrect")
@@ -34,7 +46,7 @@ class Browser:
         self.wait = WebDriverWait(self.driver, 10)
 
 
-        self.driver.implicitly_wait(time_wait)
+cd        self.driver.implicitly_wait(time_wait)
 
     def get_wd_wait(self):
         return self.wait
