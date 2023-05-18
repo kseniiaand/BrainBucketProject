@@ -44,5 +44,33 @@ class IniFileReader:
             raise Exception("Length option is not present in the config file")
         return value
 
+    def get_user1_email(self):
+        value = self.data.get('user1', "email", fallback=None)
+        if value is None:
+            raise Exception("email option is not found in user1 section")
+        return value
 
+    def get_user1_password(self):
+        value = self.data.get('user1', "password", fallback=None)
+        if value is None:
+            raise Exception("password option is not found in iser1 section")
+        return value
+
+    def get_url(self):
+        value = self.data.get('environment', 'url', fallback=None)
+        if value is None:
+            raise Exception("URL option is not found in environment section")
+        return value
+
+    def get_username(self):
+        value = self.data.get('browserstack', 'username', fallback=None)
+        if value is None:
+            raise Exception('Username option is not found in browserstack section')
+        return value
+
+    def get_accesskey(self):
+        value = self.data.get('browserstack', 'accesskey', fallback=None)
+        if value is None:
+            raise Exception('Access Key option is not found in browserstack section')
+        return value
 
