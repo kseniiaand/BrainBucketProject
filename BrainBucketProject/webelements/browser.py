@@ -26,7 +26,8 @@ class Browser:
                 options.add_experimental_option("excludeSwitches", ['enable-automation'])
                 self.driver = webdriver.Chrome(executable_path='drivers/chromedriver 7', options = options)
             elif browser_name.lower() == "remote":
-                BROWSERSTACK_URL = 'https://xQ3xdfsoj2XiwiBgzmmn:kseniiaandriushc_IPnHpC-cloud.browserstack.com/wd/hub'
+                BROWSERSTACK_URL = 'https://'+username+':'+ accesskey+'@hub-cloud.browserstack.com/wd/hub'
+
                 desired_cap = {
 
                     'os': 'Windows',
@@ -45,8 +46,7 @@ class Browser:
         self.driver.get(url)
         self.wait = WebDriverWait(self.driver, 10)
 
-
-cd        self.driver.implicitly_wait(time_wait)
+        self.driver.implicitly_wait(time_wait)
 
     def get_wd_wait(self):
         return self.wait
