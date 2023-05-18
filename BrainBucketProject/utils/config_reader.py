@@ -30,3 +30,19 @@ class ConfigReader:
 
     def get_browser_length(self):
         return self.reader.get_browser_length()
+
+    def get_user1_email(self):
+        return self.reader.get_user1_email()
+
+    def get_user1_password(self):
+        return self.reader.get_user1_password()
+
+    def get_url(self):
+        return self.reader.get_url()
+
+    def get_username(self):
+        return self.reader.get_username()
+
+    def get_accesskey(self):
+        return self.reader.get_accesskey()
+
